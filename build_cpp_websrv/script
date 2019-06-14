@@ -4,6 +4,8 @@ cd $cis_base_dir/jobs/maintenance/build_cpp_websrv/cis1-webui-native-srv-cpp || 
 
 git pull origin master || exit 1
 
+mkdir $cis_base_dir/jobs/maintenance/build_cpp_websrv/build
+
 cd $cis_base_dir/jobs/maintenance/build_cpp_websrv/build || exit 1
 
 conan install ../cis1-webui-native-srv-cpp || exit 1
