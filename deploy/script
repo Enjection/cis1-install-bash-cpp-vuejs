@@ -1,0 +1,16 @@
+#!/bin/bash
+
+cpp_build_number=$($cis_base_dir/core/getparam cpp_build_number)
+vuejs_build_number=$($cis_base_dir/core/getparam vuejs_build_number)
+
+cd $cis_base_dir
+
+git pull origin master || exit 1
+
+mkdir webui
+
+rm webui/ts_ws
+cp $cis_base_dir/jobs/maintenance/build_cpp_websrv/$cpp_build_number/ts_ws webui
+
+rm webui/static -r
+cp $cis_base_dir/jobs/maintenance/build_vuejs_webui/$vuejs_build_number/dist webui/static -r

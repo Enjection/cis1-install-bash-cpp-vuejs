@@ -1,15 +1,17 @@
 #!/bin/bash
 
-cd $cis_base_dir/jobs/maintenance/build_cpp_websrv/cis1-webui-native-srv-cpp || exit 1
+cd ../cis1-webui-native-srv-cpp || exit 1
 
 git pull origin master || exit 1
 
-mkdir $cis_base_dir/jobs/maintenance/build_cpp_websrv/build
+mkdir ../build
 
-cd $cis_base_dir/jobs/maintenance/build_cpp_websrv/build || exit 1
+cd ../build || exit 1
 
 conan install ../cis1-webui-native-srv-cpp || exit 1
 
-cmake ../cis1-webui-native-srv-cpp -DCMAKE_CXX_COMPILER=/usr/bin/g++-8 -DCMAKE_C_COMPILER=/usr/bin/gcc-8 --DCMAKE_BUILD_TYPE=Release || exit 1
+cmake ../cis1-webui-native-srv-cpp -DCMAKE_CXX_COMPILER=/usr/bin/g++-8 -DCMAKE_C_COMPILER=/usr/bin/gcc-8 -DCMAKE_BUILD_TYPE=Release || exit 1
 
 make -j4 || exit 1
+
+cp bin/ts_ws ../$build_number || exit 1

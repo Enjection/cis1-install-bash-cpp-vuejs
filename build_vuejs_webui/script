@@ -1,9 +1,13 @@
 #!/bin/bash
 
-cd $cis_base_dir/jobs/cis1-install-bashcore-cppwebui-vuejswebui/build_vuejs_webui/cis1-webui-native-front-vuejs || exit 1
+echo `pwd`
+
+cd ../cis1-webui-native-front-vuejs || exit 1
 
 git pull origin master || exit 1
 
 npm install || exit 1
 
 npm run build || exit 1
+
+cp dist ../$build_number/dist -r || exit 1
