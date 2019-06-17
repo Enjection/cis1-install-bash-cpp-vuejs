@@ -7,10 +7,17 @@ cd $cis_base_dir
 
 git pull origin master || exit 1
 
-mkdir webui
-
 rm webui/ts_ws
 cp $cis_base_dir/jobs/maintenance/build_cpp_websrv/$cpp_build_number/ts_ws webui
 
 rm webui/static -r
 cp $cis_base_dir/jobs/maintenance/build_vuejs_webui/$vuejs_build_number/dist webui/static -r
+
+cd webui
+
+#TODO fixme
+pkill ts_ws
+
+./ts_ws config.ini &
+
+disown -h
