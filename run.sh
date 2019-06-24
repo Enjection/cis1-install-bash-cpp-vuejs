@@ -1,3 +1,5 @@
 #!/bin/bash
 
-$cis_base_dir/core/startjob maintenance/pipeline
+source $cis_base_dir/core/cis.conf
+
+$cis_base_dir/core/$startjob maintenance/pipeline
