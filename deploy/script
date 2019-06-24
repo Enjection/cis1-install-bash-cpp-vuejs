@@ -7,11 +7,17 @@ cd $cis_base_dir
 
 git pull origin master || exit 1
 
-rm webui/ts_ws
-cp $cis_base_dir/jobs/maintenance/build_cpp_websrv/$cpp_build_number/ts_ws webui
+if [ "x$cpp_build_number" != "x"]
+then
+  rm webui/ts_ws
+  cp $cis_base_dir/jobs/maintenance/build_cpp_websrv/$cpp_build_number/ts_ws webui
+fi
 
-rm webui/static -r
-cp $cis_base_dir/jobs/maintenance/build_vuejs_webui/$vuejs_build_number/dist webui/static -r
+if [ "x$vuejs_build_number" != "x"]
+then
+  rm webui/static -r
+  cp $cis_base_dir/jobs/maintenance/build_vuejs_webui/$vuejs_build_number/dist webui/static -r
+fi
 
 cd webui
 
