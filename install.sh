@@ -26,7 +26,7 @@ else
 fi
 
 while true; do
-    read -p "Do you wish to compile and run webui?" yn
+    read -p "Do you wish to compile and run webui? [y/n] " yn
     case $yn in
         [Yy]* ) break;;
         [Nn]* ) exit;;
